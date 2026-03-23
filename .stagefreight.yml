@@ -76,7 +76,7 @@ targets:
     when: { branches: [main], events: [push, tag] }
     file: "README.md"
     description: "Prometheus exporter for Eaton UPS devices with temperature, system info, and extended metrics"
-    link_base: "https://github.com/{var:github_org}/{var:repo}/blob/main"
+    link_base: "https://github.com/{var:github_org}/{var:repo}/blob/master"
 
   # ── Primary release ─────────────────────────────────────────────
   - id: primary-release
@@ -97,7 +97,7 @@ targets:
 
 narrator:
   - file: "README.md"
-    link_base: "https://github.com/{var:github_org}/{var:repo}/blob/main"
+    link_base: "https://github.com/{var:github_org}/{var:repo}/blob/master"
     items:
       # ── Project section (repo health & sources) ─────────────────
       - id: project.github
