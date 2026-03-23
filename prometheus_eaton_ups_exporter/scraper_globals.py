@@ -23,7 +23,7 @@ LOGIN_DATA = {
 }
 
 # Timeouts in seconds
-REQUEST_TIMEOUT = 2
+REQUEST_TIMEOUT = 10
 
 # Exit Codes
 NORMAL_EXECUTION = 0

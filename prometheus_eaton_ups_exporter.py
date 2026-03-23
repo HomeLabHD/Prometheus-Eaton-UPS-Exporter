@@ -103,8 +103,15 @@ def create_parser() -> ArgumentParser:
         '--login-timeout',
         type=float,
         help='The login timeout for the UPSs in seconds',
-        choices=[Range(REQUEST_TIMEOUT, 10)],
+        choices=[Range(2, 30)],
         default=3
+    )
+    parser.add_argument(
+        '--request-timeout',
+        type=float,
+        help='The request timeout for UPS API calls in seconds',
+        choices=[Range(2, 30)],
+        default=REQUEST_TIMEOUT
     )
     return parser
 
@@ -139,7 +146,8 @@ def run(args: Namespace) -> None:
             insecure=args.insecure,
             verbose=args.verbose,
             threading=args.threading,
-            login_timeout=args.login_timeout
+            login_timeout=args.login_timeout,
+            request_timeout=args.request_timeout
         )
     )
     # Start up the server to expose the metrics.

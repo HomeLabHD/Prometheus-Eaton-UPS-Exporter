@@ -57,11 +57,13 @@ class UPSScraper:
                  name: str | None = None,
                  insecure: bool = False,
                  verbose: bool = False,
-                 login_timeout: int = 3) -> None:
+                 login_timeout: int = 3,
+                 request_timeout: float = REQUEST_TIMEOUT) -> None:
         self.ups_address = ups_address
         self.username, self.password = authentication
         self.name = name
         self.login_timeout = login_timeout
+        self.request_timeout = request_timeout
         self.session = Session()
         self.logger = create_logger(__name__, not verbose)
 
@@ -164,7 +166,7 @@ class UPSScraper:
             request = self.session.get(
                 url,
                 headers=headers,
-                timeout=REQUEST_TIMEOUT
+                timeout=self.request_timeout
             )
 
             # Session might be expired, connect again

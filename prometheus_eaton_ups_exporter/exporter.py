@@ -325,7 +325,8 @@ class UPSMultiExporter(UPSExporter):
             insecure: bool = False,
             threading: bool = False,
             verbose: bool = False,
-            login_timeout: int = 3
+            login_timeout: int = 3,
+            request_timeout: float = 10
     ) -> None:
         self.logger = create_logger(
             f"{__name__}.{self.__class__.__name__}", not verbose
@@ -334,6 +335,7 @@ class UPSMultiExporter(UPSExporter):
         self.threading = threading
         self.verbose = verbose
         self.login_timeout = login_timeout
+        self.request_timeout = request_timeout
         self.ups_devices = self.get_ups_devices(config)
 
     @staticmethod
@@ -366,7 +368,8 @@ class UPSMultiExporter(UPSExporter):
                 key,
                 insecure=self.insecure,
                 verbose=self.verbose,
-                login_timeout=self.login_timeout
+                login_timeout=self.login_timeout,
+                request_timeout=self.request_timeout
             )
             for key, value in devices.items()
         ]
