@@ -8,6 +8,6 @@ RUN pip install --no-cache-dir -r requirements.txt && \
     mkdir etc
 
 # Copy the application code
-COPY src/prometheus_eaton_ups_exporter prometheus_eaton_ups_exporter
+COPY prometheus-eaton-ups-exporter prometheus_eaton_ups_exporter
 
 CMD ["python", "-m", "prometheus_eaton_ups_exporter", "-k", "-v", "-c", "/usr/src/app/etc/config.json", "-w", "0.0.0.0:9795"]
