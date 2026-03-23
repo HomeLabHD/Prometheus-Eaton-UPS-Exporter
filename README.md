@@ -3,10 +3,15 @@
 A Prometheus exporter for Eaton UPS devices. Collects metrics from the REST API of Eaton UPS web interfaces including temperature, system info, input/output power, and battery status. Supports monitoring multiple UPSs with configurable timeouts.
 
 <!-- sf:project:start -->
+[![badge/GitHub-source-181717?logo=github](https://img.shields.io/badge/GitHub-source-181717?logo=github)](https://github.com/HomeLabHD/prometheus-eaton-ups-exporter) [![badge/GitLab-source-FC6D26?logo=gitlab](https://img.shields.io/badge/GitLab-source-FC6D26?logo=gitlab)](https://gitlab.prplanit.com/PrPlanIT/HomeLabHD/prometheus-eaton-ups-exporter) [![Last Commit](https://img.shields.io/github/last-commit/HomeLabHD/prometheus-eaton-ups-exporter)](https://github.com/HomeLabHD/prometheus-eaton-ups-exporter/commits) [![Open Issues](https://img.shields.io/github/issues/HomeLabHD/prometheus-eaton-ups-exporter)](https://github.com/HomeLabHD/prometheus-eaton-ups-exporter/issues) ![github/issues-pr/HomeLabHD/prometheus--eaton--ups--exporter](https://img.shields.io/github/issues-pr/HomeLabHD/prometheus--eaton--ups--exporter) [![Contributors](https://img.shields.io/github/contributors/HomeLabHD/prometheus-eaton-ups-exporter)](https://github.com/HomeLabHD/prometheus-eaton-ups-exporter/graphs/contributors)
 <!-- sf:project:end -->
 <!-- sf:badges:start -->
+[![build](https://raw.githubusercontent.com/HomeLabHD/prometheus-eaton-ups-exporter/main/.stagefreight/badges/build.svg)](https://gitlab.prplanit.com/PrPlanIT/HomeLabHD/prometheus-eaton-ups-exporter/-/pipelines) [![license](https://raw.githubusercontent.com/HomeLabHD/prometheus-eaton-ups-exporter/main/.stagefreight/badges/license.svg)](https://github.com/HomeLabHD/prometheus-eaton-ups-exporter/blob/main/LICENSE) [![release](https://raw.githubusercontent.com/HomeLabHD/prometheus-eaton-ups-exporter/main/.stagefreight/badges/release.svg)](https://github.com/HomeLabHD/prometheus-eaton-ups-exporter/releases) ![updated](https://raw.githubusercontent.com/HomeLabHD/prometheus-eaton-ups-exporter/main/.stagefreight/badges/updated.svg) [![badge/donate-FF5E5B?logo=ko-fi&logoColor=white](https://img.shields.io/badge/donate-FF5E5B?logo=ko-fi&logoColor=white)](https://ko-fi.com/T6T41IT163) [![badge/sponsor-EA4AAA?logo=githubsponsors&logoColor=white](https://img.shields.io/badge/sponsor-EA4AAA?logo=githubsponsors&logoColor=white)](https://github.com/sponsors/HomeLabHD)
 <!-- sf:badges:end -->
 <!-- sf:image:start -->
+[![badge/Docker-hlhd%2Fprometheus--eaton--ups--exporter-2496ED?logo=docker&logoColor=white](https://img.shields.io/badge/Docker-hlhd%2Fprometheus--eaton--ups--exporter-2496ED?logo=docker&logoColor=white)](https://hub.docker.com/r/hlhd/prometheus-eaton-ups-exporter) [![pulls](https://raw.githubusercontent.com/HomeLabHD/prometheus-eaton-ups-exporter/main/.stagefreight/badges/pulls.svg)](https://hub.docker.com/r/hlhd/prometheus-eaton-ups-exporter)
+
+[![latest](https://raw.githubusercontent.com/HomeLabHD/prometheus-eaton-ups-exporter/main/.stagefreight/badges/latest.svg)](https://hub.docker.com/r/hlhd/prometheus-eaton-ups-exporter/tags?name=latest) ![updated](https://raw.githubusercontent.com/HomeLabHD/prometheus-eaton-ups-exporter/main/.stagefreight/badges/release-updated.svg) [![size](https://raw.githubusercontent.com/HomeLabHD/prometheus-eaton-ups-exporter/main/.stagefreight/badges/release-size.svg)](https://hub.docker.com/r/hlhd/prometheus-eaton-ups-exporter/tags?name=v0.9.2) [![latest-dev](https://raw.githubusercontent.com/HomeLabHD/prometheus-eaton-ups-exporter/main/.stagefreight/badges/latest-dev.svg)](https://hub.docker.com/r/hlhd/prometheus-eaton-ups-exporter/tags?name=latest-dev) ![updated](https://raw.githubusercontent.com/HomeLabHD/prometheus-eaton-ups-exporter/main/.stagefreight/badges/dev-updated.svg) [![size](https://raw.githubusercontent.com/HomeLabHD/prometheus-eaton-ups-exporter/main/.stagefreight/badges/dev-size.svg)](https://hub.docker.com/r/hlhd/prometheus-eaton-ups-exporter/tags?name=latest-dev)
 <!-- sf:image:end -->
 
 ### Features:
@@ -102,12 +107,19 @@ containers:
 An included [Grafana dashboard](grafana/ups.json) provides out-of-the-box visualization of all exported metrics.
 
 <!-- sf:versions:start -->
+| Name | Version | Source Ref |
+| --- | --- | --- |
+| python | 3.14.3 | FROM python:3.14.3-alpine3.23 |
 <!-- sf:versions:end -->
 
 <!-- sf:apk:start -->
+*No items*
 <!-- sf:apk:end -->
 
 <!-- sf:pip:start -->
+| Name | Version | Pinned |
+| --- | --- | --- |
+| requirements.txt |  | no |
 <!-- sf:pip:end -->
 
 ## Credits
