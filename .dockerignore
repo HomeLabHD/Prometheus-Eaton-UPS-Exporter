@@ -1,0 +1,12 @@
+.git
+.gitignore
+.stagefreight
+.gitlab-ci.yml
+.stagefreight.yml
+.pyre_configuration
+tests
+grafana
+example_config.json
+conftest.py
+README.md
+LICENSE

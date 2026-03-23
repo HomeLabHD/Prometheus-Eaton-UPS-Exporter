@@ -356,6 +356,9 @@ manifest:
 
 lint:
   level: full
+  exclude:
+    - "tests/cassettes/*.yaml"
+    - "grafana/*.json"
 
 security:
   enabled: true
