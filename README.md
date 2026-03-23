@@ -1,109 +1,121 @@
-# Eaton UPS Prometheus Exporter
+# Prometheus Eaton UPS Exporter
 
-## Description
+A Prometheus exporter for Eaton UPS devices. Collects metrics from the REST API of Eaton UPS web interfaces including temperature, system info, input/output power, and battery status. Supports monitoring multiple UPSs with configurable timeouts.
 
-A Prometheus exporter for Eaton UPSs. Data is collected from the REST API of the
-web UI of Eaton UPSs and is made available for Prometheus to scrape.
+<!-- sf:project:start -->
+<!-- sf:project:end -->
+<!-- sf:badges:start -->
+<!-- sf:badges:end -->
+<!-- sf:image:start -->
+<!-- sf:image:end -->
 
-The exporter can monitor multiple UPSs.
+### Features:
 
-This is a fork of [psyinfra/prometheus-eaton-ups-exporter](https://github.com/psyinfra/prometheus-eaton-ups-exporter)
-with updates from [adyekjaer/prometheus-eaton-ups-exporter](https://github.com/adyekjaer/prometheus-eaton-ups-exporter)
+|                                |                                                                                           |
+| ------------------------------ | ----------------------------------------------------------------------------------------- |
+| **Extended Metrics**           | Temperature, system info (firmware versions), input/output health, energy tracking, efficiency |
+| **Multi-UPS Monitoring**       | Monitor multiple Eaton UPSs from a single exporter instance                               |
+| **Configurable Timeouts**      | `--request-timeout` and `--login-timeout` CLI flags for slow management cards              |
+| **Threading Support**          | Optional multi-threaded scraping for faster collection across multiple UPSs                |
+| **Grafana Dashboard**          | Included dashboard for out-of-the-box visualization                                       |
+| **Self-Signed SSL Support**    | `-k` flag for UPSs with self-signed certificates                                         |
 
-## Information Exported
-- System details
-- Temperature
-- Input Voltage (V)
-- Input Frequency (Hz)
-- Output Voltage (V)
-- Output Frequency (Hz)
-- Output Current (A)
-- Output Apparent Power (VA)
-- Output Active Power (W)
-- Output Power Factor
-- Output Percent Load (%)
-- Battery Voltage (V)
-- Battery Capacity (%)
-- Battery Remaining Time (s)
-- Battery Health Status (given as the remaining lifetime in years [uncertain, see [#19](https://github.com/psyinfra/prometheus-eaton-ups-exporter/issues/19)])
+### Metrics Exported:
 
-## Supported Devices:
-* Eaton 5P Series should work with recent firmwares
+| Category | Metrics |
+|----------|---------|
+| **System** | Device name, bootloader version, firmware version |
+| **Temperature** | Internal UPS temperature (Celsius) |
+| **Input** | Voltage, frequency, current, voltage min/max/nominal, health status |
+| **Output** | Voltage, frequency, current, apparent power (VA), active power (W), power factor, load ratio, average energy, cumulated energy, efficiency, health status |
+| **Battery** | Voltage, state of charge (%), remaining time (s), health status |
 
-## Usage:
-UPSs to monitor and their credentials are defined in a config file. See
-`config.json` for an example.
+### Supported Devices:
 
-```
-./prometheus_eaton_ups_exporter.py [-h] [-w WEB.LISTEN_ADDRESS] -c CONFIG [-k] [-t] [-v] [--login-timeout {range 2 - 10}]
+- Eaton 5P Series (recent firmwares)
+- Eaton 5PX Series (firmware 3.1.8+)
 
+## Quick Start
 
-optional arguments:
-  -h, --help            show this help message and exit
-  -w WEB.LISTEN_ADDRESS, --web.listen-address WEB.LISTEN_ADDRESS
-                        Interface and port to listen on, in the format of "ip_address:port".
-                        If the IP is omitted, the exporter listens on all interfaces. (default: 0.0.0.0:9795)
-  -c CONFIG, --config CONFIG
-                        Configuration JSON file containing UPS addresses and login info (default: None)
-  -k, --insecure        Allow the exporter to connect to UPSs with self-signed SSL certificates (default: False)
-  -t, --threading       Whether to use multi-threading for scraping (faster) (default: False)
-  -v, --verbose         Be more verbose (default: False)
-  --login-timeout {range 2 - 10}
-                        The login timeout for the UPSs in seconds (default: 3)
-
+```bash
+docker run -d -p 9795:9795 \
+  -v ./config.json:/usr/src/app/etc/config.json:ro \
+  hlhd/prometheus-eaton-ups-exporter:latest
 ```
 
-## Defaults:
-* Default host-address is `0.0.0.0`
-* Default port is 9795 (see also: [Prometheus default port allocations](https://github.com/prometheus/prometheus/wiki/Default-port-allocations))
-* Login timeout is set to 3 seconds
-* Other request timeouts are set to 2 seconds
-* Static values are described in `prometheus_eaton_ups_exporter/scraper_globals.py`
+### Configuration
 
-## Requirements:
-- requests
-- [prometheus_client](https://github.com/prometheus/client_python)
+Create a `config.json` with your UPS credentials:
 
-# Installation:
-    git clone https://github.com/psyinfra/prometheus-eaton-ups-exporter.git
-    cd prometheus-eaton-ups-exporter
-    pip install -r requirements.txt
-
-# Docker
-Images available at [hub.docker.com](https://hub.docker.com/repository/docker/aluveitie/prometheus-eaton-ups-exporter)
-
-# Testing:
-
-Install requirements with
-
-    pip install -r test-requirements.txt
-
-Runt tests with
-
-    pytest tests
-
-#### Test-Requirements:
-- pytest
-- pytest-vcr
-
-
-# Build container image
-```
-podman buildx build --platform linux/amd64,linux/arm64 -t prometheus-eaton-ups-exporter:latest .
-```
-test it locally:
-```
-podman run -d -p 9795:9795 -v ./config.json:/usr/src/app/etc/config.json:Z localhost/prometheus-eaton-ups-exporter:latest
+```json
+{
+  "MyUPS": {
+    "address": "https://10.0.0.1",
+    "user": "admin",
+    "password": "secret"
+  }
+}
 ```
 
-## To publish multi arch
+### Usage
+
 ```
-podman manifest create prometheus-eaton-ups-exporter:latest
-podman buildx build --platform=linux/arm64,linux/amd64 --file Dockerfile --manifest prometheus-eaton-ups-exporter:latest .
-podman manifest push prometheus-eaton-ups-exporter:latest docker://your-registry.io/prometheus-eaton-ups-exporter:latest
+prometheus_eaton_ups_exporter.py [-h] -c CONFIG [-w HOST:PORT] [-k] [-t] [-v]
+                                 [--login-timeout SECONDS] [--request-timeout SECONDS]
+
+  -c, --config CONFIG         JSON config file with UPS addresses and credentials
+  -w, --web.listen-address    Listen address (default: 0.0.0.0:9795)
+  -k, --insecure              Allow self-signed SSL certificates
+  -t, --threading             Multi-threaded scraping (faster for multiple UPSs)
+  -v, --verbose               Verbose logging
+  --login-timeout             Login timeout in seconds (default: 3, range: 2-30)
+  --request-timeout           API request timeout in seconds (default: 10, range: 2-30)
 ```
 
+### Defaults
 
-# Credits
-* [psyinfra](https://github.com/psyinfra) for the exporter itself
-* [adyekjaer](https://github.com/adyekjaer) for updates to work with newer firmwares
+| Setting | Default |
+|---------|---------|
+| Listen address | `0.0.0.0:9795` |
+| Login timeout | 3 seconds |
+| Request timeout | 10 seconds |
+
+### Kubernetes
+
+The exporter is deployed via a Deployment with the config mounted from a Secret:
+
+```yaml
+containers:
+  - name: exporter
+    image: hlhd/prometheus-eaton-ups-exporter:latest
+    ports:
+      - containerPort: 9795
+    volumeMounts:
+      - name: config
+        mountPath: /usr/src/app/etc/config.json
+        subPath: config.json
+        readOnly: true
+```
+
+### Grafana Dashboard
+
+An included [Grafana dashboard](grafana/ups.json) provides out-of-the-box visualization of all exported metrics.
+
+<!-- sf:versions:start -->
+<!-- sf:versions:end -->
+
+<!-- sf:apk:start -->
+<!-- sf:apk:end -->
+
+<!-- sf:pip:start -->
+<!-- sf:pip:end -->
+
+## Credits
+
+- [psyinfra](https://github.com/psyinfra/prometheus-eaton-ups-exporter) — original exporter
+- [nvollmar](https://github.com/nvollmar/prometheus-eaton-ups-exporter) — temperature, system info, extended metrics, Grafana dashboard
+- [adyekjaer](https://github.com/adyekjaer/prometheus-eaton-ups-exporter) — firmware 3.1.8 compatibility
+
+## License
+
+Distributed under the [ISC](LICENSE) License.
