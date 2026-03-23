@@ -1,9 +1,9 @@
 .csv
-venv/*
-.txt
+venv/
 build/
 __pycache__
 *egg-info
 .pyre
 .idea
 config.json
+.stagefreight/
