@@ -322,29 +322,30 @@ narrator:
         link: "https://hub.docker.com/r/{var:org}/{var:repo}/tags?name=latest-dev"
 
       # ── Build contents: base image versions ────────────────────
-      # ── Build contents: base image versions ────────────────────
-      - id: contents.versions
+      # ── Image contents (from manifest inventory) ──────────────────
+      - id: contents.base
         kind: build-contents
+        section: inventories.versions
+        renderer: badges
         placement:
-          between: ["<!-- sf:versions:start -->", "<!-- sf:versions:end -->"]
+          between: ["<!-- sf:contents-base:start -->", "<!-- sf:contents-base:end -->"]
           mode: replace
-        section: "inventories.versions"
 
-      # ── Build contents: system packages (apk) ─────────────────
       - id: contents.apk
         kind: build-contents
+        section: inventories.apk
+        renderer: badges
         placement:
-          between: ["<!-- sf:apk:start -->", "<!-- sf:apk:end -->"]
+          between: ["<!-- sf:contents-apk:start -->", "<!-- sf:contents-apk:end -->"]
           mode: replace
-        section: "inventories.apk"
 
-      # ── Build contents: python packages (pip) ──────────────────
       - id: contents.pip
         kind: build-contents
+        section: inventories.pip
+        renderer: badges
         placement:
-          between: ["<!-- sf:pip:start -->", "<!-- sf:pip:end -->"]
+          between: ["<!-- sf:contents-pip:start -->", "<!-- sf:contents-pip:end -->"]
           mode: replace
-        section: "inventories.pip"
 
 manifest:
   enabled: true

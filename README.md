@@ -110,27 +110,14 @@ An included [Grafana dashboard](docs/grafana-dashboard.json) provides out-of-the
 
 ## Image Contents
 
-### Base Image
+<!-- sf:contents-base:start -->
+<!-- sf:contents-base:end -->
 
-<!-- sf:versions:start -->
-| Name | Version | Source Ref |
-| --- | --- | --- |
-| python | 3.14.3 | FROM python:3.14.3-alpine3.23 |
-<!-- sf:versions:end -->
+<!-- sf:contents-apk:start -->
+<!-- sf:contents-apk:end -->
 
-### System Packages (apk)
-
-<!-- sf:apk:start -->
-*No items*
-<!-- sf:apk:end -->
-
-### Python Packages (pip)
-
-<!-- sf:pip:start -->
-| Name | Version | Pinned |
-| --- | --- | --- |
-| requirements.txt |  | no |
-<!-- sf:pip:end -->
+<!-- sf:contents-pip:start -->
+<!-- sf:contents-pip:end -->
 
 ## Credits
 
