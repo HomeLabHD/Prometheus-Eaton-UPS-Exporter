@@ -78,6 +78,32 @@ targets:
     description: "Prometheus exporter for Eaton UPS devices with temperature, system info, and extended metrics"
     link_base: "https://github.com/{var:github_org}/{var:repo}/blob/master"
 
+  # ── Harbor: stable releases ─────────────────────────────────────
+  - id: harbor-stable
+    kind: registry
+    build: prometheus-eaton-ups-exporter
+    url: cr.pcfae.com
+    provider: harbor
+    path: "{var:org}/{var:repo}"
+    tags:
+      - "{version}"
+      - "latest"
+    when: { git_tags: [stable], events: [tag] }
+    credentials: HARBOR
+
+  # ── Harbor: dev builds on every commit ─────────────────────────
+  - id: harbor-dev
+    kind: registry
+    build: prometheus-eaton-ups-exporter
+    url: cr.pcfae.com
+    provider: harbor
+    path: "{var:org}/{var:repo}"
+    tags:
+      - "dev-{sha:8}"
+      - "latest-dev"
+    when: { branches: [main], events: [push] }
+    credentials: HARBOR
+
   # ── Primary release ─────────────────────────────────────────────
   - id: primary-release
     kind: release
