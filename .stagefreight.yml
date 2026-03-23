@@ -322,14 +322,13 @@ narrator:
         link: "https://hub.docker.com/r/{var:org}/{var:repo}/tags?name=latest-dev"
 
       # ── Build contents: base image versions ────────────────────
+      # ── Build contents: base image versions ────────────────────
       - id: contents.versions
         kind: build-contents
         placement:
           between: ["<!-- sf:versions:start -->", "<!-- sf:versions:end -->"]
           mode: replace
         section: "inventories.versions"
-        renderer: table
-        columns: [name, version, source_ref]
 
       # ── Build contents: system packages (apk) ─────────────────
       - id: contents.apk
@@ -338,7 +337,6 @@ narrator:
           between: ["<!-- sf:apk:start -->", "<!-- sf:apk:end -->"]
           mode: replace
         section: "inventories.apk"
-        renderer: list
 
       # ── Build contents: python packages (pip) ──────────────────
       - id: contents.pip
@@ -347,8 +345,6 @@ narrator:
           between: ["<!-- sf:pip:start -->", "<!-- sf:pip:end -->"]
           mode: replace
         section: "inventories.pip"
-        renderer: table
-        columns: [name, version, pinned]
 
 manifest:
   enabled: true
