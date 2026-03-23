@@ -111,12 +111,15 @@ An included [Grafana dashboard](docs/grafana-dashboard.json) provides out-of-the
 ## Image Contents
 
 <!-- sf:contents-base:start -->
+![python](https://img.shields.io/badge/python-3.14.3-0078D4?style=flat)
 <!-- sf:contents-base:end -->
 
 <!-- sf:contents-apk:start -->
+*No items*
 <!-- sf:contents-apk:end -->
 
 <!-- sf:contents-pip:start -->
+![requirements.txt](https://img.shields.io/badge/requirements.txt-555?style=flat)
 <!-- sf:contents-pip:end -->
 
 ## Credits
