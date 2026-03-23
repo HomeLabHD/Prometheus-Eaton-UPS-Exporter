@@ -104,7 +104,13 @@ containers:
 
 ### Grafana Dashboard
 
-An included [Grafana dashboard](grafana/ups.json) provides out-of-the-box visualization of all exported metrics.
+An included [Grafana dashboard](docs/grafana-dashboard.json) provides out-of-the-box visualization of all exported metrics.
+
+---
+
+## Image Contents
+
+### Base Image
 
 <!-- sf:versions:start -->
 | Name | Version | Source Ref |
@@ -112,9 +118,13 @@ An included [Grafana dashboard](grafana/ups.json) provides out-of-the-box visual
 | python | 3.14.3 | FROM python:3.14.3-alpine3.23 |
 <!-- sf:versions:end -->
 
+### System Packages (apk)
+
 <!-- sf:apk:start -->
 *No items*
 <!-- sf:apk:end -->
+
+### Python Packages (pip)
 
 <!-- sf:pip:start -->
 | Name | Version | Pinned |
