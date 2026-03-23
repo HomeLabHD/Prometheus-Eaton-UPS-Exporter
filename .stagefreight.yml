@@ -1,0 +1,66 @@
+version: 1
+
+vars:
+  org: sofmeright
+  gitlab_group: PrPlanIT/HomeLabHD
+  repo: prometheus-eaton-ups-exporter
+
+sources:
+  primary:
+    kind: git
+    worktree: "."
+    default_branch: "master"
+
+policies:
+  git_tags:
+    stable: "^v?\\d+\\.\\d+\\.\\d+$"
+    prerelease: "^v?\\d+\\.\\d+\\.\\d+-.+"
+  branches:
+    main: "^master$"
+
+builds:
+  - id: prometheus-eaton-ups-exporter
+    kind: docker
+    build_mode: crucible
+    platforms: [linux/amd64]
+
+targets:
+  - id: harbor-dev
+    kind: registry
+    build: prometheus-eaton-ups-exporter
+    url: cr.pcfae.com
+    provider: harbor
+    path: "{var:org}/{var:repo}"
+    tags:
+      - "dev-{sha:8}"
+      - "latest-dev"
+    when: { branches: [main], events: [push] }
+    credentials: HARBOR
+
+  - id: harbor-stable
+    kind: registry
+    build: prometheus-eaton-ups-exporter
+    url: cr.pcfae.com
+    provider: harbor
+    path: "{var:org}/{var:repo}"
+    tags:
+      - "v{version}"
+      - "latest"
+    when: { git_tags: [stable], events: [tag] }
+    credentials: HARBOR
+
+commit:
+  default_type: docs
+  conventional: true
+  backend: git
+
+security:
+  enabled: true
+  output: ".stagefreight/security"
+  sbom: true
+  release_detail: full
+
+release:
+  enabled: true
+  security_summary: ".stagefreight/security"
+  registry_links: true
