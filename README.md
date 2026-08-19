@@ -3,15 +3,13 @@
 A Prometheus exporter for Eaton UPS devices. Collects metrics from the REST API of Eaton UPS web interfaces including temperature, system info, input/output power, and battery status. Supports monitoring multiple UPSs with configurable timeouts.
 
 <!-- sf:project:start -->
-[![badge/GitHub-source-181717?logo=github](https://img.shields.io/badge/GitHub-source-181717?logo=github)](https://github.com/HomeLabHD/prometheus-eaton-ups-exporter) [![badge/GitLab-source-FC6D26?logo=gitlab](https://img.shields.io/badge/GitLab-source-FC6D26?logo=gitlab)](https://gitlab.prplanit.com/PrPlanIT/HomeLabHD/prometheus-eaton-ups-exporter) [![Last Commit](https://img.shields.io/github/last-commit/HomeLabHD/prometheus-eaton-ups-exporter)](https://github.com/HomeLabHD/prometheus-eaton-ups-exporter/commits) [![Open Issues](https://img.shields.io/github/issues/HomeLabHD/prometheus-eaton-ups-exporter)](https://github.com/HomeLabHD/prometheus-eaton-ups-exporter/issues) ![github/issues-pr/HomeLabHD/prometheus--eaton--ups--exporter](https://img.shields.io/github/issues-pr/HomeLabHD/prometheus--eaton--ups--exporter) [![Contributors](https://img.shields.io/github/contributors/HomeLabHD/prometheus-eaton-ups-exporter)](https://github.com/HomeLabHD/prometheus-eaton-ups-exporter/graphs/contributors)
+[![GitHub](https://img.shields.io/badge/GitHub-source-181717?logo=github)](https://github.com/HomeLabHD/prometheus-eaton-ups-exporter) [![GitLab](https://img.shields.io/badge/GitLab-source-FC6D26?logo=gitlab)](https://gitlab.prplanit.com/PrPlanIT/HomeLabHD/prometheus-eaton-ups-exporter) [![Last Commit](https://img.shields.io/github/last-commit/HomeLabHD/prometheus-eaton-ups-exporter)](https://github.com/HomeLabHD/prometheus-eaton-ups-exporter/commits) [![Open Issues](https://img.shields.io/github/issues/HomeLabHD/prometheus-eaton-ups-exporter)](https://github.com/HomeLabHD/prometheus-eaton-ups-exporter/issues) [![Open PRs](https://img.shields.io/github/issues-pr/HomeLabHD/prometheus-eaton-ups-exporter)](https://github.com/HomeLabHD/prometheus-eaton-ups-exporter/pulls) [![Contributors](https://img.shields.io/github/contributors/HomeLabHD/prometheus-eaton-ups-exporter)](https://github.com/HomeLabHD/prometheus-eaton-ups-exporter/graphs/contributors)
 <!-- sf:project:end -->
 <!-- sf:badges:start -->
-[![build](https://raw.githubusercontent.com/HomeLabHD/prometheus-eaton-ups-exporter/master/.stagefreight/badges/build.svg)](https://gitlab.prplanit.com/PrPlanIT/HomeLabHD/prometheus-eaton-ups-exporter/-/pipelines) [![license](https://raw.githubusercontent.com/HomeLabHD/prometheus-eaton-ups-exporter/master/.stagefreight/badges/license.svg)](https://github.com/HomeLabHD/prometheus-eaton-ups-exporter/blob/master/LICENSE) [![release](https://raw.githubusercontent.com/HomeLabHD/prometheus-eaton-ups-exporter/master/.stagefreight/badges/release.svg)](https://github.com/HomeLabHD/prometheus-eaton-ups-exporter/releases) ![updated](https://raw.githubusercontent.com/HomeLabHD/prometheus-eaton-ups-exporter/master/.stagefreight/badges/updated.svg) [![badge/donate-FF5E5B?logo=ko-fi&logoColor=white](https://img.shields.io/badge/donate-FF5E5B?logo=ko-fi&logoColor=white)](https://ko-fi.com/T6T41IT163) [![badge/sponsor-EA4AAA?logo=githubsponsors&logoColor=white](https://img.shields.io/badge/sponsor-EA4AAA?logo=githubsponsors&logoColor=white)](https://github.com/sponsors/HomeLabHD)
+[![build](https://raw.githubusercontent.com/HomeLabHD/prometheus-eaton-ups-exporter/master/.stagefreight/scribe/build.svg)](https://gitlab.prplanit.com/PrPlanIT/HomeLabHD/prometheus-eaton-ups-exporter/-/pipelines) [![license](https://raw.githubusercontent.com/HomeLabHD/prometheus-eaton-ups-exporter/master/.stagefreight/scribe/license.svg)](https://github.com/HomeLabHD/prometheus-eaton-ups-exporter/blob/master/LICENSE) [![release](https://raw.githubusercontent.com/HomeLabHD/prometheus-eaton-ups-exporter/master/.stagefreight/scribe/release.svg)](https://github.com/HomeLabHD/prometheus-eaton-ups-exporter/releases) ![updated](https://raw.githubusercontent.com/HomeLabHD/prometheus-eaton-ups-exporter/master/.stagefreight/scribe/updated.svg) [![donate](https://img.shields.io/badge/donate-FF5E5B?logo=ko-fi&logoColor=white)](https://ko-fi.com/T6T41IT163) [![sponsor](https://img.shields.io/badge/sponsor-EA4AAA?logo=githubsponsors&logoColor=white)](https://github.com/sponsors/HomeLabHD)
 <!-- sf:badges:end -->
 <!-- sf:image:start -->
-[![badge/Docker-hlhd%2Fprometheus--eaton--ups--exporter-2496ED?logo=docker&logoColor=white](https://img.shields.io/badge/Docker-hlhd%2Fprometheus--eaton--ups--exporter-2496ED?logo=docker&logoColor=white)](https://hub.docker.com/r/hlhd/prometheus-eaton-ups-exporter) [![pulls](https://raw.githubusercontent.com/HomeLabHD/prometheus-eaton-ups-exporter/master/.stagefreight/badges/pulls.svg)](https://hub.docker.com/r/hlhd/prometheus-eaton-ups-exporter)
-
-[![latest](https://raw.githubusercontent.com/HomeLabHD/prometheus-eaton-ups-exporter/master/.stagefreight/badges/latest.svg)](https://hub.docker.com/r/hlhd/prometheus-eaton-ups-exporter/tags?name=latest) ![updated](https://raw.githubusercontent.com/HomeLabHD/prometheus-eaton-ups-exporter/master/.stagefreight/badges/release-updated.svg) [![size](https://raw.githubusercontent.com/HomeLabHD/prometheus-eaton-ups-exporter/master/.stagefreight/badges/release-size.svg)](https://hub.docker.com/r/hlhd/prometheus-eaton-ups-exporter/tags?name=v0.9.3) [![latest-dev](https://raw.githubusercontent.com/HomeLabHD/prometheus-eaton-ups-exporter/master/.stagefreight/badges/latest-dev.svg)](https://hub.docker.com/r/hlhd/prometheus-eaton-ups-exporter/tags?name=latest-dev) ![updated](https://raw.githubusercontent.com/HomeLabHD/prometheus-eaton-ups-exporter/master/.stagefreight/badges/dev-updated.svg) [![size](https://raw.githubusercontent.com/HomeLabHD/prometheus-eaton-ups-exporter/master/.stagefreight/badges/dev-size.svg)](https://hub.docker.com/r/hlhd/prometheus-eaton-ups-exporter/tags?name=latest-dev)
+[![Docker](https://img.shields.io/badge/Docker-hlhd%2Fprometheus--eaton--ups--exporter-2496ED?logo=docker&logoColor=white)](https://hub.docker.com/r/hlhd/prometheus-eaton-ups-exporter) [![pulls](https://raw.githubusercontent.com/HomeLabHD/prometheus-eaton-ups-exporter/master/.stagefreight/scribe/pulls.svg)](https://hub.docker.com/r/hlhd/prometheus-eaton-ups-exporter)
 <!-- sf:image:end -->
 
 ### Features:
@@ -111,7 +109,7 @@ An included [Grafana dashboard](docs/grafana-dashboard.json) provides out-of-the
 ## Image Contents
 
 <!-- sf:contents-base:start -->
-![python](https://img.shields.io/badge/python-3.14.3-0078D4?style=flat)
+[![python 3.14.7](https://img.shields.io/badge/python-3.14.7-0078D4?style=flat)](https://hub.docker.com/_/python)
 <!-- sf:contents-base:end -->
 
 <!-- sf:contents-apk:start -->
@@ -119,7 +117,7 @@ An included [Grafana dashboard](docs/grafana-dashboard.json) provides out-of-the
 <!-- sf:contents-apk:end -->
 
 <!-- sf:contents-pip:start -->
-![requirements.txt](https://img.shields.io/badge/requirements.txt-555?style=flat)
+[![requirements.txt](https://img.shields.io/badge/requirements.txt-555?style=flat)](https://pypi.org/project/requirements.txt/)
 <!-- sf:contents-pip:end -->
 
 ## Credits
