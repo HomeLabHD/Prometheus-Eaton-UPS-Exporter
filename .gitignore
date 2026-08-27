@@ -1,8 +1,9 @@
 .csv
-venv/
-build/
-__pycache__
-*egg-info
+__pycache__/
+*.py[cod]
+.pytest_cache/
 .pyre
 .idea
-config.json
+build/
+dist/
+*.egg-info/

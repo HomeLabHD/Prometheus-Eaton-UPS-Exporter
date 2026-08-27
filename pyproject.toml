@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "prometheus-eaton-ups-exporter"
+version = "0.8.0"
+description = "Prometheus exporter for Eaton UPS devices over the UPS REST API."
+readme = "README.md"
+license = { text = "ISC" }
+requires-python = ">=3.11"
+dependencies = [
+    "requests==2.34.2",
+    "urllib3==2.7.0",
+    "prometheus_client==0.26.0",
+]
+
+# Test-only dependencies. pytest itself is supplied by the StageFreight python test
+# toolchain; the cassette replay layer the suite marks with @pytest.mark.vcr is not.
+[project.optional-dependencies]
+test = ["pytest-vcr==1.0.2"]
+
+[project.scripts]
+prometheus-eaton-ups-exporter = "prometheus_eaton_ups_exporter.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
