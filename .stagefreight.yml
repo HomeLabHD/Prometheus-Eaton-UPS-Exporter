@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------
 # GENERATED / ENFORCED BY STAGEFREIGHT GOVERNANCE
 # Source repo: PrPlanIT/MaintenancePolicy
-# Source ref: 38257f2d3f3dae37b87336e456fa86a47a241965
+# Source ref: 1d5d5a20bd06afd542cc49718ec9139e659d1df3
 # Profile: rebaseable-fork-docker
 # This .stagefreight.yml is governed, not purely local.
 # To disable governance, detach from the control repo workflow.
@@ -19,7 +19,7 @@ vars:
 builds:
   preset: preset/build-docker.yml
 scribe:
-  preset: preset/scribe.yml
+  preset: preset/scribe-docker.yml
 lint:
   preset: preset/lint-generic.yml
 security:
@@ -58,13 +58,15 @@ metadata:
 orgs:
   HomeLabHD:
     aliases:
+      docker: prplanit
+      github: PrPlanIT
       handle: hlhd
     maintainer: HomeLabHD <homelabhelp@gmail.com>
 preset_source:
   cache_policy: authoritative
   project_id: PrPlanIT/MaintenancePolicy
   provider: gitlab
-  ref: 38257f2d3f3dae37b87336e456fa86a47a241965
+  ref: 1d5d5a20bd06afd542cc49718ec9139e659d1df3
   repo_url: https://gitlab.prplanit.com
 publish:
   preset: preset/publish-docker.yml
@@ -73,6 +75,8 @@ registries:
 repos:
   preset: preset/repos.yml
 stencils:
-  preset: preset/stencils-docker.yml
+  presets:
+    - preset/stencils-core.yml
+    - preset/stencils-docker.yml
 toolchains:
   preset: preset/toolchains.yml
