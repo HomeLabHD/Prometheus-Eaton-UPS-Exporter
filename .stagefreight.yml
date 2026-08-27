@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------
 # GENERATED / ENFORCED BY STAGEFREIGHT GOVERNANCE
 # Source repo: PrPlanIT/MaintenancePolicy
-# Source ref: f9c9b39608f34d03ebc7f7f76a3cc85fb504c6e5
+# Source ref: c552ad17f756dd83f403a28d2579cc3f40e30ac1
 # Profile: rebaseable-fork-docker
 # This .stagefreight.yml is governed, not purely local.
 # To disable governance, detach from the control repo workflow.
@@ -66,7 +66,7 @@ preset_source:
   cache_policy: authoritative
   project_id: PrPlanIT/MaintenancePolicy
   provider: gitlab
-  ref: f9c9b39608f34d03ebc7f7f76a3cc85fb504c6e5
+  ref: c552ad17f756dd83f403a28d2579cc3f40e30ac1
   repo_url: https://gitlab.prplanit.com
 publish:
   preset: preset/publish-docker.yml
