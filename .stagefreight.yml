@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------
 # GENERATED / ENFORCED BY STAGEFREIGHT GOVERNANCE
 # Source repo: PrPlanIT/MaintenancePolicy
-# Source ref: 9ea11e7e8c74f1d295de5c143b5ff00a285983dc
+# Source ref: b9104098abb0f250718b8a9d4cd0471f2f826868
 # Profile: rebaseable-fork-docker
 # This .stagefreight.yml is governed, not purely local.
 # To disable governance, detach from the control repo workflow.
@@ -43,8 +43,8 @@ git:
 metadata:
   category: monitoring
   description:
-    - Prometheus exporter for Eaton UPS devices over SNMP/HTTP.
-    - Rootless container exporting Eaton UPS load, runtime, battery, and I/O metrics to Prometheus.
+    - Prometheus exporter for Eaton UPS devices via the Eaton REST API.
+    - Rootless container exporting Eaton UPS load, runtime, battery, and I/O metrics to Prometheus, scraped over the UPS web API.
   license: MIT
   org: HomeLabHD
   title: Eaton UPS Exporter
@@ -54,7 +54,6 @@ metadata:
     - ups
     - eaton
     - monitoring
-    - snmp
 orgs:
   HomeLabHD:
     aliases:
@@ -67,7 +66,7 @@ preset_source:
   cache_policy: authoritative
   project_id: PrPlanIT/MaintenancePolicy
   provider: gitlab
-  ref: 9ea11e7e8c74f1d295de5c143b5ff00a285983dc
+  ref: b9104098abb0f250718b8a9d4cd0471f2f826868
   repo_url: https://gitlab.prplanit.com
 publish:
   preset: preset/publish-docker.yml
@@ -96,5 +95,7 @@ stencils:
     - preset/stencils-base.yml
     - preset/stencils-status.yml
     - preset/stencils-docker.yml
+test:
+  preset: preset/test-python.yml
 toolchains:
   preset: preset/toolchains.yml
