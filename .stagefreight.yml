@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------
 # GENERATED / ENFORCED BY STAGEFREIGHT GOVERNANCE
 # Source repo: PrPlanIT/MaintenancePolicy
-# Source ref: ab63cb429e4293b8f3d5e5552b540359c0ab0e6b
+# Source ref: 9c9a08078e3835df3be11459be82d6e9ccccde0d
 # Profile: rebaseable-fork-docker
 # This .stagefreight.yml is governed, not purely local.
 # To disable governance, detach from the control repo workflow.
@@ -10,10 +10,10 @@
 
 version: 1
 vars:
-  github_org: HomeLabHD
+  github_org: PrPlanIT
   github_repo: prometheus-eaton-ups-exporter
-  gitlab_group: PrPlanIT/HomeLabHD
-  org: hlhd
+  gitlab_group: HomeLabHD
+  org: prplanit
   repo: prometheus-eaton-ups-exporter
 builds:
   preset: preset/build-docker.yml
@@ -63,7 +63,7 @@ preset_source:
   cache_policy: authoritative
   project_id: PrPlanIT/MaintenancePolicy
   provider: gitlab
-  ref: ab63cb429e4293b8f3d5e5552b540359c0ab0e6b
+  ref: 9c9a08078e3835df3be11459be82d6e9ccccde0d
   repo_url: https://gitlab.prplanit.com
 publish:
   preset: preset/publish-docker.yml
