@@ -1,8 +1,8 @@
 # ------------------------------------------------------------------------------
 # GENERATED / ENFORCED BY STAGEFREIGHT GOVERNANCE
 # Source repo: PrPlanIT/MaintenancePolicy
-# Source ref: b031763542a156f404162c2cf5ce4e4dc1e9993b
-# Profile: rebaseable-fork-docker
+# Source ref: 814d185bc7dd335963b721170a179791bce141fc
+# Profile: hlhd-docker
 # This .stagefreight.yml is governed, not purely local.
 # To disable governance, detach from the control repo workflow.
 # Manual changes may be overwritten by reconciliation.
@@ -45,7 +45,7 @@ metadata:
   description:
     - Prometheus exporter for Eaton UPS devices via the Eaton REST API.
     - Rootless container exporting Eaton UPS load, runtime, battery, and I/O metrics to Prometheus, scraped over the UPS web API.
-  license: MIT
+  license: ISC
   org: HomeLabHD
   title: Eaton UPS Exporter
   topics:
@@ -66,7 +66,7 @@ preset_source:
   cache_policy: authoritative
   project_id: PrPlanIT/MaintenancePolicy
   provider: gitlab
-  ref: b031763542a156f404162c2cf5ce4e4dc1e9993b
+  ref: 814d185bc7dd335963b721170a179791bce141fc
   repo_url: https://gitlab.prplanit.com
 publish:
   preset: preset/publish-docker.yml
