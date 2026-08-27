@@ -23,8 +23,8 @@ test = ["pytest-vcr==1.0.2"]
 [project.scripts]
 prometheus-eaton-ups-exporter = "prometheus_eaton_ups_exporter.__main__:main"
 
-[tool.setuptools.packages.find]
-where = ["src"]
+[tool.setuptools]
+packages = ["prometheus_eaton_ups_exporter"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
