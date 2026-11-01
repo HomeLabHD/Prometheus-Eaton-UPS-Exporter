@@ -67,7 +67,7 @@ preset_source:
   project_id: PrPlanIT/MaintenancePolicy
   provider: gitlab
   ref: f0f17ed74846d513cdf88dea0d0ae507a9767d8b
-  repo_url: https://gitlab.prplanit.com
+  repo_url: https://git.optcp.com
 publish:
   preset: preset/publish-docker.yml
 registries:
