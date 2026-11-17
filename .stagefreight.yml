@@ -85,6 +85,8 @@ repos:
     roles:
       - primary
     worktree: .
+schedules:
+  preset: https://git.optcp.com/PrPlanIT/MaintenancePolicy//preset/schedules-upstream.yml
 stencils:
   presets:
     - https://git.optcp.com/PrPlanIT/MaintenancePolicy//preset/stencils-base.yml
@@ -97,3 +99,9 @@ toolchains:
   want:
     presets:
       - https://git.optcp.com/PrPlanIT/MaintenancePolicy//preset/toolchains-scanners.yml
+upstream:
+  preset: https://git.optcp.com/PrPlanIT/MaintenancePolicy//preset/upstream-sync.yml
+  sources:
+    upstream:
+      fork_parent: ""
+      git: https://github.com/psyinfra/prometheus-eaton-ups-exporter
