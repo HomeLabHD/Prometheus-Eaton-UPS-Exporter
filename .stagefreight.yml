@@ -46,7 +46,6 @@ metadata:
   description:
     - Prometheus exporter for Eaton UPS devices via the Eaton REST API.
     - Rootless container exporting Eaton UPS load, runtime, battery, and I/O metrics to Prometheus, scraped over the UPS web API.
-  license: ISC
   org: HomeLabHD
   title: Eaton UPS Exporter
   topics:
@@ -103,5 +102,5 @@ upstream:
   preset: https://git.optcp.com/PrPlanIT/MaintenancePolicy//preset/upstream-sync.yml
   sources:
     upstream:
-      fork_parent: ""
+      fork_parent: null
       git: https://github.com/psyinfra/prometheus-eaton-ups-exporter
